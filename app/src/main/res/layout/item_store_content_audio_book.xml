@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="audioBookModel"
+            type="com.adapter.multiple.data.api.model.ResultModel" />
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/rootCL"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/coverPhotoIV"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:contentDescription="TODO"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@drawable/ic_temp_cover" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mainCL"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_book_audio_gradient"
+                android:foreground="?selectableItemBackgroundBorderless"
+                android:paddingTop="44dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="UnusedAttribute">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/coverCL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/headerCL">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/coverCV"
+                        android:layout_width="125dp"
+                        android:layout_height="185dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="32dp"
+                        android:orientation="vertical"
+                        app:cardBackgroundColor="@color/black"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/coverPhotoCardIV"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:contentDescription="TODO"
+                                android:scaleType="centerCrop"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:src="@drawable/ic_temp_cover" />
+
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/playFAB"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="9sp"
+                    android:contentDescription="TODO"
+                    android:src="@drawable/ic_play"
+                    app:backgroundTint="@color/black"
+                    app:fabSize="mini"
+                    app:layout_constraintBottom_toBottomOf="@+id/coverCL"
+                    app:layout_constraintEnd_toEndOf="@+id/coverCL"
+                    app:layout_constraintStart_toStartOf="@+id/coverCL"
+                    app:rippleColor="#515151"
+                    app:tint="@color/white" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/headerCL"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="40dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/coverCL">
+
+                    <TextView
+                        android:id="@+id/trackNameTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@{audioBookModel.collectionName}"
+                        android:textColor="@color/black"
+                        android:textSize="35sp"
+                        android:textStyle="bold"
+                        android:typeface="sans"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="HeadHeadHeadHeadHeadHeadHeadHeadHeadHeadHeadHeadHeadHeadHead" />
+
+                    <TextView
+                        android:id="@+id/artistNameTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="6dp"
+                        android:text="@{audioBookModel.artistName}"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/trackNameTV"
+                        tools:text="Talking Heads" />
+
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/boardCL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/artistNameTV">
+
+                        <TextView
+                            android:id="@+id/priceTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="6dp"
+                            android:gravity="center|left"
+                            android:padding="0dp"
+                            android:text="@{String.valueOf(audioBookModel.trackPrice)}"
+                            android:textColor="@color/black"
+                            app:drawableStartCompat="@drawable/ic_money_cash"
+                            app:drawableTint="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="RtlHardcoded"
+                            tools:text="1.25" />
+
+                        <TextView
+                            android:id="@+id/trackCountTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:drawablePadding="6dp"
+                            android:gravity="center|left"
+                            android:padding="4dp"
+                            android:text="@{String.valueOf(audioBookModel.trackCount)}"
+                            android:textColor="@color/black"
+                            app:drawableStartCompat="@drawable/ic_disc"
+                            app:drawableTint="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/priceTV"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="RtlHardcoded"
+                            tools:text="5" />
+
+                        <TextView
+                            android:id="@+id/countryTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:drawablePadding="6dp"
+                            android:gravity="center|left"
+                            android:padding="4dp"
+                            android:text="@{audioBookModel.country}"
+                            android:textColor="@color/black"
+                            app:drawableStartCompat="@drawable/ic_earth"
+                            app:drawableTint="@color/black"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/trackCountTV"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="RtlHardcoded"
+                            tools:text="USD" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/collectionCensoredNameTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:singleLine="true"
+                        android:text="@{audioBookModel.collectionCensoredName}"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/boardCL"
+                        tools:text="True Stories (Bonus Track Version)" />
+
+                    <TextView
+                        android:id="@+id/releaseDateTV"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="@{audioBookModel.releaseDate}"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/collectionCensoredNameTV"
+                        tools:text="1986-10-07T07:00:00Z" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_weight="1"
+            android:background="#E90C0C0C"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:ignore="InefficientWeight" />
+
+    </LinearLayout>
+
+</layout>
